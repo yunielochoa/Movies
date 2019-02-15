@@ -1,0 +1,50 @@
+﻿
+@model List<RentAMovie.Models.Movie>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Movies</h1>
+
+<table id="movies" class="table table-hover table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">Movie</th>
+            <th scope="col">Genre</th>
+           
+        </tr>
+
+    </thead>
+    <tbody></tbody>
+</table>
+@section scripts
+{
+    <script>
+        $(document).ready(function() {
+            var table = $("#movies").DataTable({
+                ajax: {
+                    url: "/api/movies",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "name"
+
+                    },
+                    {
+                        data: "genre.name"
+                    }
+                ]
+
+            });
+
+        });
+
+    </script>
+}
+
+
+
+
+
